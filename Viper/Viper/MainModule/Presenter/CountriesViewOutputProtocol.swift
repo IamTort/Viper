@@ -4,9 +4,8 @@
 import Foundation
 
 /// Протокол  презентера экрана стран
-protocol CountriesPresenterOutputProtocol: AnyObject {
+protocol CountriesViewOutputProtocol: AnyObject {
     func goHotelsScreen()
-    func updateView()
     func countriesCount() -> Int?
     func makeCountry(index: Int) -> Country?
     func fetchCountries()

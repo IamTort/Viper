@@ -8,13 +8,13 @@ final class CountriesInteractor: CountriesInteractorInputProtocol {
     
     // MARK: - Public property
     
-    weak var presenter: CountriesPresenterOutputProtocol?
+    weak var presenter: CountriesInteractorOutputProtocol?
     var networkService: NetworkService?
     var countries: [Country] = []
     
     // MARK: - Initializer
     
-    init(networkService: NetworkService?, presenter: CountriesPresenterOutputProtocol?) {
+    init(networkService: NetworkService?, presenter: CountriesInteractorOutputProtocol?) {
         self.networkService = networkService
         self.presenter = presenter
     }

@@ -8,4 +8,5 @@ protocol CountriesInteractorOutputProtocol: AnyObject {
     func countriesCount() -> Int?
     func makeCountry(index: Int) -> Country?
     func fetchCountries()
+    func updateView()
 }

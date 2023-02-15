@@ -4,7 +4,7 @@
 import Foundation
 
 /// Презентер экрана со странами
-final class CountriesPresenter: CountriesPresenterOutputProtocol, CountriesInteractorOutputProtocol {
+final class CountriesPresenter: CountriesViewOutputProtocol, CountriesInteractorOutputProtocol {
     // MARK: - Public property
 
     weak var view: CountriesInputViewProtocol?

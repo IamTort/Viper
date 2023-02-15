@@ -32,7 +32,7 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
 
     // MARK: - Public property
     
-    var presenter: CountriesPresenterOutputProtocol?
+    var presenter: CountriesViewOutputProtocol?
     var didTapOnCountry: Int?
 
     // MARK: - Public methods

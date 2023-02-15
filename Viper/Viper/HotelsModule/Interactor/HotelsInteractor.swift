@@ -4,10 +4,16 @@
 import Foundation
 
 /// Получение данных для экрана отелей
-final class HotelsInteractor: HotelsInteractorProtocol {
+final class HotelsInteractor: HotelsInteractorInputProtocol {
+    
+    // MARK: - Public property
+    
+    weak var presenter: HotelsInteractorOutputProtocol?
+    var hotels: [Hotel] = []
+    
     // MARK: - Private property
 
-    private var baliHotels = [
+    private let data = [
         Hotel(
             hotelName: "Roadmap Hotel 5*",
             hotelImageName: I.hotel,
@@ -25,25 +31,15 @@ final class HotelsInteractor: HotelsInteractorProtocol {
             hotelImageName: I.hotel3,
             rate: 9.6,
             description: S.description
-        ),
+        )
     ]
 
     // MARK: - Public methods
 
-    func fetchHotels(id: Int) -> [Hotel]? {
-        switch id {
-        case 1:
-            return baliHotels
-        case 2:
-            return baliHotels
-        case 3:
-            return baliHotels
-        case 4:
-            return baliHotels
-        case 5:
-            return baliHotels
-        default:
-            return nil
+    func fetchHotels(id: Int) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.hotels = self.data
+            self.presenter?.receiveData()
         }
     }
 }

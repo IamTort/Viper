@@ -22,6 +22,7 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
         let interactor = HotelsInteractor()
         let presenter = HotelsPresenter(view: view, interactor: interactor, id: id, country: country)
         view.presenter = presenter
+        interactor.presenter = presenter
         return view
     }
 }
