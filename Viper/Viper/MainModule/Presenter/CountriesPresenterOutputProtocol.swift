@@ -5,6 +5,9 @@ import Foundation
 
 /// Протокол  презентера экрана стран
 protocol CountriesPresenterOutputProtocol {
-    var countries: [Country] { get set }
     func goHotelsScreen()
+    func updateView()
+    func countriesCount() -> Int?
+    func makeCountry(index: Int) -> Country?
+    func fetchCountries()
 }

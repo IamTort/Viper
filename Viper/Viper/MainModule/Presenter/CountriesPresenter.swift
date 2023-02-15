@@ -4,37 +4,42 @@
 import Foundation
 
 /// Презентер экрана со странами
-final class CountriesPresenter: CountriesPresenterOutputProtocol {
+final class CountriesPresenter: CountriesPresenterOutputProtocol, CountriesInteractorOutputProtocol {
     // MARK: - Public property
 
-    var countries: [Country] = []
-
-    // MARK: - Private property
-
-    private weak var view: CountriesInputViewProtocol?
-    private var router: RouterProtocol?
-    private var interactor: CountriesInteractorInputProtocol?
+    weak var view: CountriesInputViewProtocol?
+    var router: RouterProtocol?
+    var interactor: CountriesInteractorInputProtocol?
 
     // MARK: - Initializers
 
-    init(view: CountriesInputViewProtocol, interactor: CountriesInteractorInputProtocol, router: RouterProtocol?) {
+    init(view: CountriesInputViewProtocol, router: RouterProtocol?) {
         self.view = view
-        self.interactor = interactor
         self.router = router
-        fetchCountries()
     }
 
     // MARK: - Public methods
-
+    
     func goHotelsScreen() {
-        guard let index = view?.didTapOnCountry else { return }
-        router?.showHotels(id: countries[index].id, country: countries[index].name)
+        guard let index = view?.didTapOnCountry,
+        let interactor = interactor else { return }
+        router?.showHotels(id: interactor.countries[index].id, country: interactor.countries[index].name)
+    }
+    
+    func updateView() {
+        view?.updateTableView()
+    }
+    
+    func countriesCount() -> Int? {
+        interactor?.countries.count
+    }
+    
+    func makeCountry(index: Int) -> Country? {
+        interactor?.countries[index]
     }
 
-    // MARK: - Private methods
-
-    private func fetchCountries() {
+    func fetchCountries() {
         guard let interactor = interactor else { return }
-        countries = interactor.fetchData()
+        interactor.fetchData()
     }
 }

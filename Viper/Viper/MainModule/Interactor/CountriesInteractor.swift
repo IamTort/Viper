@@ -5,18 +5,22 @@ import Foundation
 
 /// Получение данных для экрана стран
 final class CountriesInteractor: CountriesInteractorInputProtocol {
+    
+    var networkService: NetworkService?
+    var countries: [Country] = []
+    var presenter: CountriesPresenterOutputProtocol?
+    
+    init(networkService: NetworkService?, presenter: CountriesPresenterOutputProtocol?) {
+        self.networkService = networkService
+        self.presenter = presenter
+    }
     // MARK: - Public methods
 
-    func fetchData() -> [Country] {
-        [
-            Country(id: 1, imageName: I.bali, name: "Бали"),
-            Country(id: 2, imageName: I.egypt, name: "Египет"),
-            Country(id: 3, imageName: I.shrilanka, name: "Шри-Ланка"),
-            Country(id: 4, imageName: I.vietnam, name: "Вьетнам"),
-            Country(id: 5, imageName: I.tailand, name: "Тайланд"),
-            Country(id: 3, imageName: I.shrilanka, name: "Шри-Ланка"),
-            Country(id: 4, imageName: I.vietnam, name: "Вьетнам"),
-            Country(id: 5, imageName: I.tailand, name: "Тайланд")
-        ]
+    func fetchData() {
+        networkService?.fetchCountries(completion: { [weak self] countries in
+            guard let self = self else { return }
+            self.countries = countries
+            self.presenter?.updateView()
+        })
     }
 }

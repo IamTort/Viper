@@ -31,7 +31,7 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
     }()
 
     // MARK: - Public property
-
+    
     var presenter: CountriesPresenterOutputProtocol?
     var didTapOnCountry: Int?
 
@@ -51,6 +51,11 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
         collectionView.delegate = self
         configureTitle()
         setupConstraints()
+        presenter?.fetchCountries()
+    }
+    
+    func updateTableView() {
+        collectionView.reloadData()
     }
     
     private func addSubview() {
@@ -79,7 +84,7 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
 
 extension CountriesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        presenter?.countries.count ?? 0
+        presenter?.countriesCount() ?? 0
     }
     
     func collectionView(
@@ -90,7 +95,7 @@ extension CountriesViewController: UICollectionViewDataSource {
             withReuseIdentifier: S.collectionCellIdentifier,
             for: indexPath
         ) as? CountryCollectionViewCell else { return UICollectionViewCell() }
-        let data = presenter?.countries[indexPath.item]
+        let data = presenter?.makeCountry(index: indexPath.row)
         cell.configureCell(data)
         return cell
     }

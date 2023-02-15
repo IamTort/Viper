@@ -3,13 +3,17 @@
 
 import UIKit
 
-/// Роутер
+/// Роутер экрана стран
 final class Router: RouterProtocol {
     // MARK: - Public property
 
     var navigationController: UINavigationController?
     var assemblyBuilder: AssemblyBuilderProtocol?
 
+    // MARK: - Private property
+    
+    private let hotelRouter = HotelRouter()
+    
     // MARK: - Initializer
 
     init(
@@ -27,16 +31,9 @@ final class Router: RouterProtocol {
               let mainViewController = assemblyBuilder?.makeMainModule(router: self) else { return }
         navigationController.viewControllers = [mainViewController]
     }
-
+    
     func showHotels(id: Int, country: String) {
-        guard let hotelsViewController = assemblyBuilder?.makeHotelsModule(id: id, country: country, router: self),
-              let navigationController = navigationController else { return }
-        navigationController.pushViewController(hotelsViewController, animated: true)
-    }
-
-    func popToRoot() {
-        if let navigationController = navigationController {
-            navigationController.popToRootViewController(animated: true)
-        }
+        guard let navigationController = navigationController else { return }
+        hotelRouter.pushViewController(index: id, country: country, navigationViewController: navigationController)
     }
 }

@@ -32,6 +32,7 @@ final class HotelsViewController: UIViewController, HotelsViewProtocol {
         view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.delegate = self
         configureTitle()
         createConstraint()
     }
@@ -54,7 +55,7 @@ final class HotelsViewController: UIViewController, HotelsViewProtocol {
 
 // MARK: - UITableViewDataSource
 
-extension HotelsViewController: UITableViewDataSource {
+extension HotelsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter?.hotels.count ?? 0
     }
@@ -70,6 +71,6 @@ extension HotelsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        140
+        return 140
     }
 }

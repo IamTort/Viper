@@ -4,6 +4,7 @@
 import Foundation
 
 /// Протокол интерактора экрана стран
-protocol CountriesInteractorInputProtocol {
-    func fetchData() -> [Country]
+protocol CountriesInteractorInputProtocol: AnyObject {
+    var countries: [Country] { get set }
+    func fetchData()
 }

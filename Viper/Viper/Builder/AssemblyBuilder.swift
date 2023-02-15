@@ -9,13 +9,15 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
 
     func makeMainModule(router: RouterProtocol) -> UIViewController {
         let view = CountriesViewController()
-        let interactor = CountriesInteractor()
-        let presenter = CountriesPresenter(view: view, interactor: interactor, router: router)
+        let networkService = NetworkService()
+        let presenter = CountriesPresenter(view: view, router: router)
+        let interactor = CountriesInteractor(networkService: networkService, presenter: presenter)
+        presenter.interactor = interactor
         view.presenter = presenter
         return view
     }
 
-    func makeHotelsModule(id: Int, country: String, router: RouterProtocol) -> UIViewController {
+    func makeHotelsModule(id: Int, country: String, router: HotelRouterInputProtocol) -> UIViewController {
         let view = HotelsViewController()
         let interactor = HotelsInteractor()
         let presenter = HotelsPresenter(view: view, interactor: interactor, id: id, country: country)

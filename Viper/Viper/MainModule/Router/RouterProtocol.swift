@@ -3,9 +3,8 @@
 
 import Foundation
 
-/// Протокол роутера
-protocol RouterProtocol: RouterMainProtocol {
+/// Протокол роутера экрана стран
+protocol RouterProtocol: RouterMainProtocol, AnyObject {
     func initialViewController()
     func showHotels(id: Int, country: String)
-    func popToRoot()
 }
