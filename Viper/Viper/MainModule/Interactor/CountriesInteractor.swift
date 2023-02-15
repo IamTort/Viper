@@ -8,9 +8,9 @@ final class CountriesInteractor: CountriesInteractorInputProtocol {
     
     // MARK: - Public property
     
+    weak var presenter: CountriesPresenterOutputProtocol?
     var networkService: NetworkService?
     var countries: [Country] = []
-    var presenter: CountriesPresenterOutputProtocol?
     
     // MARK: - Initializer
     
