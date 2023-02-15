@@ -1,14 +1,10 @@
-//
-//  AssemblyBuilderProtocol.swift
-//  Viper
-//
-//  Created by angelina on 14.02.2023.
-//
+// AssemblyBuilderProtocol.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
 /// Протокол сборщика модулей
 protocol AssemblyBuilderProtocol {
     func makeMainModule(router: RouterProtocol) -> UIViewController
-    func makeHotelsModule(id: Int, country: String, router: RouterProtocol) -> UIViewController 
+    func makeHotelsModule(id: Int, country: String, router: RouterProtocol) -> UIViewController
 }

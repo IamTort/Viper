@@ -1,9 +1,5 @@
-//
-//  RouterMainProtocol.swift
-//  Viper
-//
-//  Created by angelina on 15.02.2023.
-//
+// RouterMainProtocol.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 

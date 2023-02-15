@@ -1,17 +1,12 @@
-//
-//  HotelsViewController.swift
-//  Viper
-//
-//  Created by angelina on 14.02.2023.
-//
+// HotelsViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
 /// Экран отелей
 final class HotelsViewController: UIViewController, HotelsViewProtocol {
-    
     // MARK: - Private Visual Components
-    
+
     private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,20 +14,20 @@ final class HotelsViewController: UIViewController, HotelsViewProtocol {
         tableView.register(HotelTableViewCell.self, forCellReuseIdentifier: S.tableCellIdentifier)
         return tableView
     }()
-    
+
     // MARK: - Public property
-    
+
     var presenter: HotelsPresenterProtocol?
-    
+
     // MARK: - LifeCycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
+
     // MARK: - Private methods
-    
+
     private func setupUI() {
         view.addSubview(tableView)
         tableView.dataSource = self
@@ -43,7 +38,7 @@ final class HotelsViewController: UIViewController, HotelsViewProtocol {
         }
         createConstraint()
     }
-    
+
     private func createConstraint() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
@@ -55,21 +50,23 @@ final class HotelsViewController: UIViewController, HotelsViewProtocol {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
+
 extension HotelsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter?.hotels.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: S.tableCellIdentifier,
-            for: indexPath) as? HotelTableViewCell,
-              let hotel = presenter?.hotels[indexPath.row] else { return UITableViewCell() }
+            for: indexPath
+        ) as? HotelTableViewCell,
+            let hotel = presenter?.hotels[indexPath.row] else { return UITableViewCell() }
         cell.setupData(hotel: hotel)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        140
     }
 }

@@ -1,9 +1,5 @@
-//
-//  Hotel.swift
-//  Viper
-//
-//  Created by angelina on 14.02.2023.
-//
+// Hotel.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
 

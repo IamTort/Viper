@@ -1,9 +1,5 @@
-//
-//  CountriesInteractorInputProtocol.swift
-//  Viper
-//
-//  Created by angelina on 15.02.2023.
-//
+// CountriesInteractorInputProtocol.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
 

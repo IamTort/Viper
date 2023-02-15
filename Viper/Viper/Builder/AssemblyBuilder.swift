@@ -1,16 +1,12 @@
-//
-//  AssemblyBuilder.swift
-//  Viper
-//
-//  Created by angelina on 14.02.2023.
-//
+// AssemblyBuilder.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
 /// Сборщик модулей
 final class AssemblyBuilder: AssemblyBuilderProtocol {
     // MARK: - Public methods
-    
+
     func makeMainModule(router: RouterProtocol) -> UIViewController {
         let view = CountriesViewController()
         let interactor = CountriesInteractor()
@@ -18,7 +14,7 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
         view.presenter = presenter
         return view
     }
-    
+
     func makeHotelsModule(id: Int, country: String, router: RouterProtocol) -> UIViewController {
         let view = HotelsViewController()
         let interactor = HotelsInteractor()

@@ -1,9 +1,5 @@
-//
-//  HotelsInteractorProtocol.swift
-//  Viper
-//
-//  Created by angelina on 15.02.2023.
-//
+// HotelsInteractorProtocol.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
 
