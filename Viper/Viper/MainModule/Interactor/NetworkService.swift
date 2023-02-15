@@ -5,6 +5,8 @@ import Foundation
 
 final class NetworkService {
     
+    // MARK: - Private property
+    
     private let countries = [
         Country(id: 1, imageName: I.bali, name: "Бали"),
         Country(id: 2, imageName: I.egypt, name: "Египет"),
@@ -15,6 +17,8 @@ final class NetworkService {
         Country(id: 4, imageName: I.vietnam, name: "Вьетнам"),
         Country(id: 5, imageName: I.tailand, name: "Тайланд")
     ]
+    
+    // MARK: - Public methods
     
     func fetchCountries(completion: @escaping ([Country]) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

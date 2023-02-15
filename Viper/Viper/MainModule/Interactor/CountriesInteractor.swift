@@ -6,14 +6,19 @@ import Foundation
 /// Получение данных для экрана стран
 final class CountriesInteractor: CountriesInteractorInputProtocol {
     
+    // MARK: - Public property
+    
     var networkService: NetworkService?
     var countries: [Country] = []
     var presenter: CountriesPresenterOutputProtocol?
+    
+    // MARK: - Initializer
     
     init(networkService: NetworkService?, presenter: CountriesPresenterOutputProtocol?) {
         self.networkService = networkService
         self.presenter = presenter
     }
+    
     // MARK: - Public methods
 
     func fetchData() {

@@ -42,6 +42,10 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
         setupUI()
     }
 
+    func updateTableView() {
+        collectionView.reloadData()
+    }
+    
     // MARK: - Private methods
 
     private func setupUI() {
@@ -52,10 +56,6 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
         configureTitle()
         setupConstraints()
         presenter?.fetchCountries()
-    }
-    
-    func updateTableView() {
-        collectionView.reloadData()
     }
     
     private func addSubview() {
