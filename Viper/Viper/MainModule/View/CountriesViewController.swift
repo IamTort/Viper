@@ -52,6 +52,7 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
         nameLabel.text = S.bestToursTitle
         view.backgroundColor = .magenta
         setupConstraints()
+        print("comit")
     }
 
     private func setupConstraints() {
