@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Viper
+
+  Created by angelina on 13.02.2023.
+  
+*/
+"title" = "Home";
+"error" = "init(coder:) has not been implemented";
+"collectionCellIdentifier" = "cell";
+"bestToursTitle" = "Лучшие туры";
+"tableCellIdentifier" = "tableCell";
