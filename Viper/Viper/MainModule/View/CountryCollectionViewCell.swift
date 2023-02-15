@@ -9,7 +9,7 @@ final class CountryCollectionViewCell: UICollectionViewCell {
 
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.font = .systemFont(ofSize: 17)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false

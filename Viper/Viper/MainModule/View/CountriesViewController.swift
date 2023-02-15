@@ -19,10 +19,10 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
         collectionView.register(CountryCollectionViewCell.self, forCellWithReuseIdentifier: S.collectionCellIdentifier)
         return collectionView
     }()
-
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.black
+        label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -45,14 +45,21 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
     // MARK: - Private methods
 
     private func setupUI() {
-        view.addSubview(nameLabel)
-        view.addSubview(collectionView)
+        view.backgroundColor = .magenta
+        addSubview()
         collectionView.dataSource = self
         collectionView.delegate = self
-        nameLabel.text = S.bestToursTitle
-        view.backgroundColor = .magenta
+        configureTitle()
         setupConstraints()
-        print("comit")
+    }
+    
+    private func addSubview() {
+        view.addSubview(nameLabel)
+        view.addSubview(collectionView)
+    }
+    
+    private func configureTitle() {
+        nameLabel.text = S.bestToursTitle
     }
 
     private func setupConstraints() {
@@ -68,13 +75,13 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
     }
 }
 
-// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+// MARK: - UICollectionViewDataSource
 
-extension CountriesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CountriesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         presenter?.countries.count ?? 0
     }
-
+    
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
@@ -87,7 +94,11 @@ extension CountriesViewController: UICollectionViewDataSource, UICollectionViewD
         cell.configureCell(data)
         return cell
     }
+}
 
+// MARK: - UICollectionViewDelegate
+
+extension CountriesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         didTapOnCountry = indexPath.row
         presenter?.goHotelsScreen()

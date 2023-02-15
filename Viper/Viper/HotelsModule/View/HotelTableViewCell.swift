@@ -9,7 +9,7 @@ final class HotelTableViewCell: UITableViewCell {
 
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.black
+        label.textColor = .black
         label.font = .systemFont(ofSize: 17)
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -21,7 +21,7 @@ final class HotelTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = UIColor.black
+        label.textColor = .black
         label.textAlignment = .natural
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -36,7 +36,7 @@ final class HotelTableViewCell: UITableViewCell {
     private let rateView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = UIColor.magenta
+        view.backgroundColor = .magenta
         view.layer.cornerRadius = 5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -83,7 +83,7 @@ final class HotelTableViewCell: UITableViewCell {
         rateView.backgroundColor = nil
     }
 
-    func setupData(hotel: Hotel) {
+    func configure(hotel: Hotel) {
         hotelImageView.image = hotel.hotelImageName.image
         nameLabel.text = hotel.hotelName
         rateLabel.text = String(hotel.rate)

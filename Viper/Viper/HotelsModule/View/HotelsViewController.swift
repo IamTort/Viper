@@ -29,14 +29,17 @@ final class HotelsViewController: UIViewController, HotelsViewProtocol {
     // MARK: - Private methods
 
     private func setupUI() {
+        view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.dataSource = self
-        tableView.delegate = self
-        view.backgroundColor = .white
-        if let country = presenter?.country {
-            navigationItem.title = "Отели в \(country)"
-        }
+        configureTitle()
         createConstraint()
+    }
+    
+    private func configureTitle() {
+        if let country = presenter?.country {
+            navigationItem.title = "\(S.hotels)\(country)"
+        }
     }
 
     private func createConstraint() {
@@ -49,9 +52,9 @@ final class HotelsViewController: UIViewController, HotelsViewProtocol {
     }
 }
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
+// MARK: - UITableViewDataSource
 
-extension HotelsViewController: UITableViewDataSource, UITableViewDelegate {
+extension HotelsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter?.hotels.count ?? 0
     }
@@ -62,7 +65,7 @@ extension HotelsViewController: UITableViewDataSource, UITableViewDelegate {
             for: indexPath
         ) as? HotelTableViewCell,
             let hotel = presenter?.hotels[indexPath.row] else { return UITableViewCell() }
-        cell.setupData(hotel: hotel)
+        cell.configure(hotel: hotel)
         return cell
     }
 
