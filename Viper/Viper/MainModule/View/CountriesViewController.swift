@@ -35,12 +35,14 @@ final class CountriesViewController: UIViewController, CountriesInputViewProtoco
     var presenter: CountriesViewOutputProtocol?
     var didTapOnCountry: Int?
 
-    // MARK: - Public methods
-
+    // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
+    
+    // MARK: - Public methods
 
     func updateTableView() {
         collectionView.reloadData()

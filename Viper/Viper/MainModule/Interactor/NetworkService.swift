@@ -3,7 +3,8 @@
 
 import Foundation
 
-final class NetworkService {
+/// Cервис по получению данных с сети
+final class NetworkService: NetworkServiceProtocol {
     
     // MARK: - Private property
     

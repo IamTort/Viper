@@ -63,7 +63,6 @@ final class HotelTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = UITableViewCell.SelectionStyle.none
         setupUI()
     }
 
@@ -93,6 +92,7 @@ final class HotelTableViewCell: UITableViewCell {
     // MARK: - Private methods
 
     private func setupUI() {
+        selectionStyle = UITableViewCell.SelectionStyle.none
         contentView.backgroundColor = .clear
         contentView.addSubview(boxView)
         boxView.addSubview(nameLabel)
